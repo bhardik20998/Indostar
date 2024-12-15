@@ -1,0 +1,173 @@
+* {
+  scroll-behavior: smooth;
+}
+h2 {
+  margin-bottom: 0 !important;
+}
+.property-scorecard {
+  font-family: Arial, sans-serif;
+  color: #333;
+
+  background-color: #f9f9f9;
+}
+.slider-popup {
+  /* position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  background: white;
+
+  /* border: 1px solid black; */
+  border-radius: 8px;
+  z-index: 1000;
+}
+
+.popup-content h3 {
+  margin: 0 0 10px 0;
+}
+
+.slider {
+  width: 100%;
+}
+
+button {
+  margin-top: 10px;
+  padding: 5px 10px;
+}
+
+.header {
+  text-align: center;
+  background-color: #00796b;
+  color: white;
+  padding: 15px;
+  font-size: 1.5em;
+  font-weight: bold;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.deal-details {
+  display: flex;
+  justify-content: space-evenly;
+  font-weight: bold;
+}
+
+.grid-container {
+  display: flex;
+  justify-content: space-evenly;
+  border-bottom: 2px solid lightgray;
+}
+
+.left-section {
+  background-color: #00796b;
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 18%;
+  display: grid;
+}
+
+.heading-container {
+  background-color: #02c6af;
+  height: 2em;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5em;
+}
+.customer-details,
+.credit-history,
+.amenities,
+.amenities-2 {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+  display: grid;
+  margin-left: 0.5em;
+}
+
+.nearby-properties,
+.property-score {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.credit-meter,
+.score-meter,
+.map-placeholder {
+  width: 100%;
+  height: 150px;
+  background-color: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #888;
+  border-radius: 8px;
+}
+
+.heading-dashboard {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  margin-top: 0%;
+}
+
+.property-price {
+  background-color: #f0f4c3;
+  padding: 10px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* .amenities p {
+  display: inline-block;
+  padding: 5px 8px;
+  margin: 4px;
+  background-color: #e8f5e9;
+  border-radius: 4px;
+  font-size: 0.9em;
+} */
+
+.credit-history p,
+.customer-details p,
+.left-section p,
+.amenities p,
+.amenities-2 p {
+  font-weight: bolder;
+  margin: 4px 0;
+  line-height: 1.3;
+  margin-left: 0.7em;
+}
+
+.property-score p {
+  font-weight: bold;
+  font-size: 1em;
+}
+
+.deal-details span {
+  color: #00796b;
+  font-weight: bold;
+}
+
+.icon-div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.custom-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Adjust size */
+  height: 40px; /* Adjust size */
+  border-radius: 50%; /* Makes it circular */
+  background-color: rgba(255, 255, 255, 0.586); /* Icon background color */
+  color: "#00796b"; /* Text color */
+  font-weight: bold;
+  font-size: 18px; /* Adjust text size */
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
