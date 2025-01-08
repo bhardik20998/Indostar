@@ -8,11 +8,11 @@ import { formFields } from "./constants"; // Assuming you have a constants file
 import { useNavigate } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { toast } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const UploadPage = () => {
-  toast.configure();
+  
   const [pdfFile, setPdfFile] = useState(null);
   const [fileUrl, setFileUrl] = useState(null);
   const [showLatLngFields, setShowLatLngFields] = useState(false);
@@ -46,7 +46,7 @@ const UploadPage = () => {
 
   const handleCheck = async () => {
     if (!pdfFile) {
-      alert("No file selected!");
+      toast.info("No file selected!");
       return;
     }
     const formData = new FormData();
@@ -61,13 +61,21 @@ const UploadPage = () => {
     );
     const latlong = await response.json();
     setShowLatLngFields(true);
+    toast.info("Latitude and Longitude could not be fetched, Please enter manually!.");
     if (latlong.latitude) {
       setFormValues((prevValues) => ({
         ...prevValues,
         ["Latitude"]: latlong.latitude,
         ["Longitude"]: latlong.longitude,
       }));
+      toast.dismiss()
+    toast.success("Latitude and Longitude fetched successfully!");
+      }
+    else{
+      toast.dismiss()
+      toast.info("Latitude and Longitude could not be fetched, Please enter manually!.")
     }
+
   };
 
   // Handle form submission to upload file to backend
@@ -96,23 +104,25 @@ const UploadPage = () => {
 
         if (data.save) {
           console.log("Success");
-          alert(data.message);
+          toast.success(data.message);
           navigate("/searchtable");
         } else {
           console.log("Fail");
-          alert(data.message);
-
+          toast.error(data.message);
+          // toast.error("Enter Lat and Long!!")
+          
           // Show latitude and longitude fields
           setShowLatLngFields(true);
         }
 
         console.log("File path on server:", data.file_path);
+
       } else {
-        alert("Failed to upload the file.");
+        toast.error("Failed to upload the file.");
       }
     } catch (error) {
       console.error("Error uploading file:", error);
-      alert("An error occurred while uploading the file.");
+      toast.error("An error occurred while uploading the file.");
     }
   };
 
@@ -126,6 +136,19 @@ const UploadPage = () => {
           <div className="row">
             {/* Render form fields dynamically */}
             <div className="col-md-6">
+            <div className="mb-3" key={"First Name"}>
+                  <label htmlFor={"First Name"} className="form-label">
+                    {"First Name"}
+                  </label>
+                  <input
+                    type={"text"}
+                    className="form-control"
+                    id={"First Name"}
+                    placeholder={"Enter First Name"}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
               <div className="mb-3">
                 <label htmlFor="propertyType" className="form-label">
                   Property Type
@@ -193,6 +216,19 @@ const UploadPage = () => {
               </div>
             </div>
             <div className="col-md-6">
+            <div className="mb-3" key={"Last Name"}>
+                  <label htmlFor={"Last Name"} className="form-label">
+                    {"Last Name"}
+                  </label>
+                  <input
+                    type={"text"}
+                    className="form-control"
+                    id={"Last Name"}
+                    placeholder={"Enter Last Name"}
+                    onChange={handleInputChange}
+                    
+                  />
+                </div>
               {formFields.slice(3).map((field) => (
                 <div className="mb-3" key={field.id}>
                   <label htmlFor={field.id} className="form-label">

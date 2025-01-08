@@ -11,7 +11,7 @@ from django.conf import settings
 from .functions import extract_lat_lon_from_pdf
 import pandas as pd
 from datetime import datetime
-MONGO_URI = "mongodb://localhost:27017"  # Replace with your MongoDB URI
+MONGO_URI = "mongodb://localhost:27017"  
 MONGO_DB_NAME = "Property-Scorecard" 
 Api_key = 'AIzaSyCW2KbJR_ECwHKYd9H_v_su1-MCakvfNcY' 
 
@@ -148,7 +148,7 @@ def generate_nearby_places_map(latitude, longitude, selected_categories, categor
     map_url = generate_map_url(location, markers, api_key)
 
     # Save the satellite map image
-    map_filename = f"/Users/hardik/Desktop/indostarDashboard-Frontend/public/map_image.png"
+    map_filename = fr"C:\Users\HardikBhardwaj\Documents\GitHub\Indostar\indostarDashboard-Frontend\public\map_image_{latitude:.6f}_{longitude:.6f}.png"
     save_map_image(map_url, map_filename)
 
 
@@ -264,7 +264,7 @@ def generate_map_from_places(latitude, longitude, raw_places_data, selected_cate
     map_url = generate_map_url(location, markers, api_key)
 
     # Save the satellite map image
-    map_filename = "/Users/hardik/Desktop/indostarDashboard-Frontend/public/map_image.png"
+    map_filename = fr"C:\Users\HardikBhardwaj\Documents\GitHub\Indostar\indostarDashboard-Frontend\public\map_image_{latitude:.6f}_{longitude:.6f}.png"
     save_map_image(map_url, map_filename)
 
 

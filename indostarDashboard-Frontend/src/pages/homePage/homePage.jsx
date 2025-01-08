@@ -147,14 +147,18 @@ const HomePage = () => {
 
   const [imageSrc, setImageSrc] = useState("");
 
-  const imagePath = "/map_image.png";
+  const imagePath ='map_image.png'; ;
+  
 
   useEffect(() => {
     const updateImage = () => {
       // Append a timestamp to the image path to prevent caching
-      setImageSrc(`${imagePath}?t=${new Date().getTime()}`);
+      setImageSrc(`${selectedDeal
+        ? `/map_image_${Number(selectedDeal.Latitude).toFixed(6)}_${Number(selectedDeal.Longitude).toFixed(6)}.png`
+        : ""}?t=${new Date().getTime()}`);
     };
 
+   ;
     // Set interval to check for image updates every second (1000 ms)
     const intervalId = setInterval(updateImage, 1000);
 
@@ -163,7 +167,8 @@ const HomePage = () => {
 
     // Cleanup the interval on component unmount
     return () => clearInterval(intervalId);
-  }, [imagePath]);
+  }, [imagePath, selectedDeal]);
+  console.log(imageSrc)
   // Handle checkbox change
   const handleCheckboxChange = (event) => {
     const { name, checked } = event.target;
@@ -265,6 +270,7 @@ const HomePage = () => {
   };
   console.log(locationDetails);
   useEffect(() => {
+
     sendSelectedAmenities();
     fetchCityStatePincode();
   }, [selectedDeal, selectedAmenities]);

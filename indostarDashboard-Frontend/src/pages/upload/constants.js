@@ -1,5 +1,6 @@
 // formFields.js
 export const formFields = [
+  
   {
     id: "Land Area",
     label: "Land Area (sqft)",
@@ -19,10 +20,10 @@ export const formFields = [
     type: "number",
   },
   {
-    id: "dealID",
-    label: "Deal ID",
-    placeholder: "Enter Deal-ID",
-    type: "number",
+    id: "LAN ID",
+    label: "LAN ID",
+    placeholder: "Enter LAN-ID",
+    type: "text",
   },
   {
     id: "Access road width",

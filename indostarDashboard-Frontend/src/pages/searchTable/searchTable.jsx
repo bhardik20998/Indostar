@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./searchTable.css"; // Scoped CSS file for this component
 import { useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
 
 const SearchTable = () => {
   const [data, setData] = useState(null); // Original data from API
@@ -22,7 +23,12 @@ const SearchTable = () => {
   const navigate = useNavigate();
 
   const handleRowClick = (row) => {
-    navigate("/", { state: row }); // Set the clicked row's data
+    if(row["raw_places_data"] && Object.keys(row["raw_places_data"]).length > 0){
+      navigate("/", { state: row });
+    }else{
+      toast.error("No amenities data available for this row.");
+    }
+   
   };
 
   useEffect(() => {
